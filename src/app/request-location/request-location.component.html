@@ -1,0 +1,52 @@
+<div class="request-location-container">
+  <!-- Header Section -->
+  <div class="request-location-header">
+    <h1>Request Location</h1>
+  </div>
+
+  <!-- Google Map Section -->
+  <div id="map" class="map-container"></div>
+
+  <!-- Available Services Section -->
+  <div *ngIf="services.length > 0" class="service-list">
+    <div class="service-list-header">
+      <mat-icon class="service-list-icon">build</mat-icon>
+      <h3>Explore Our Available Services</h3>
+    </div>
+
+    <!-- Service Cards -->
+    <div class="service-cards">
+      <div 
+        *ngFor="let service of services" 
+        [ngClass]="{'selected': selectedService === service}" 
+        class="service-card" 
+        (click)="selectServiceLocation(selectedLocation, service)">
+        
+        <div class="service-icon">
+          <img [src]="getServiceImage(service)" alt="{{ service }}" class="service-icon-img"/>
+        </div>
+        
+        <div class="service-info">
+          <h4>{{ service }}</h4>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Buttons: Proceed & Clear Selection -->
+    <div class="action-buttons">
+      <button mat-raised-button color="primary" (click)="onSelectService()" class="proceed-btn">
+        Proceed
+      </button>
+      <button (click)="clearSelection()" class="clear-selection-btn">
+        Clear Selection
+      </button>
+    </div>
+  </div>
+
+  <!-- Button to redirect to Request Follow Up page -->
+  <div class="redirect-btn-container">
+    <button (click)="navigateToFollowUp()" class="redirect-btn">
+      Redirect to Follow-Up
+    </button>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="request-follow-up-container">
+  <!-- Status Indicators -->
+  <div class="status-indicators">
+    <div class="status-box" [class.active]="status >= 1">
+      <span class="status-step">1</span>
+      <span class="status-label">Pending</span>
+    </div>
+    <div class="status-box" [class.active]="status >= 2">
+      <span class="status-step">2</span>
+      <span class="status-label">On Way</span>
+    </div>
+    <div class="status-box" [class.active]="status >= 3">
+      <span class="status-step">3</span>
+      <span class="status-label">Delivered</span>
+    </div>
+    <div class="status-box" [class.active]="status >= 4">
+      <span class="status-step">4</span>
+      <span class="status-label">Working</span>
+    </div>
+    <div class="status-box" [class.active]="status >= 5">
+      <span class="status-step">5</span>
+      <span class="status-label">Completed</span>
+    </div>
+  </div>
+
+  <!-- User Profile Section -->
+  <div class="user-profile">
+    <div class="profile-card">
+      <img  src="user-profile.png" alt="User Profile" class="profile-image" />
+      <div class="profile-info">
+        <h3>{{ userName }}</h3>
+        <p class="location">{{ userLocation }}</p>
+        <div class="rating">
+          <span *ngFor="let star of [1, 2, 3, 4, 5]" class="star" [class.filled]="star <= userRating">★</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="action-buttons">
+    <button (click)="cancelRequest()" class="btn cancel">Cancel</button>
+    <button (click)="callUser()" class="btn call">
+      <i class="fa fa-phone"></i> Call
+    </button>
+  </div>
+
+  <!-- Google Map Container -->
+  <div class="map-container" id="follow-up-map"></div>
+</div>
